@@ -1,3 +1,0 @@
-[keyboard]
-command=~/.config/i3/scripts/kblayout.sh
-interval=1
