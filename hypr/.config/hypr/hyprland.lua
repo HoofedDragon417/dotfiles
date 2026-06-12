@@ -53,8 +53,8 @@ hl.on("hyprland.start", function ()
 --   hl.exec_cmd(terminal)
 --   hl.exec_cmd("nm-applet")
 	hl.exec_cmd("waybar")
-	hl.execc_cmd("dbus-update-activation-environment --systemd --all")
-	hl.execc_cmd("systemctl --user start graphical-session.target")
+	-- hl.exec_cmd("dbus-update-activation-environment --systemd --all")
+	-- hl.exec_cmd("systemctl --user start graphical-session.target")
 end)
 
 
@@ -289,13 +289,30 @@ hl.bind(mainMod .. " + W", hl.dsp.group.toggle())    -- dwindle only
 
 -- Move focus with mainMod + vim keys
 hl.bind(mainMod .. " + H",  hl.dsp.focus({ direction = "left" }))
-hl.bind(mainMod .. " + J", hl.dsp.focus({ direction = "right" }))
+hl.bind(mainMod .. " + L", hl.dsp.focus({ direction = "right" }))
 hl.bind(mainMod .. " + K",    hl.dsp.focus({ direction = "up" }))
-hl.bind(mainMod .. " + L",  hl.dsp.focus({ direction = "down" }))
+hl.bind(mainMod .. " + J",  hl.dsp.focus({ direction = "down" }))
+
+hl.bind(mainMod .. " + SHIFT + H", hl.dsp.window.swap({ direction = "l" }))
+hl.bind(mainMod .. " + SHIFT + J", hl.dsp.window.swap({ direction = "d" }))
+hl.bind(mainMod .. " + SHIFT + K", hl.dsp.window.swap({ direction = "u" }))
+hl.bind(mainMod .. " + SHIFT + L", hl.dsp.window.swap({ direction = "r" }))
 
 -- Move focus inside group
-hl.bind(mainMod .. " + ALT + J", hl.dsp.group.prev())
-hl.bind(mainMod .. " + ALT + K", hl.dsp.group.next())
+hl.bind(mainMod .. " + J", hl.dsp.group.prev())
+hl.bind(mainMod .. " + K", hl.dsp.group.next())
+
+hl.bind(mainMod .. " + R", hl.dsp.submap("resize"))
+
+hl.define_submap("resize", function()
+  hl.bind("H", hl.dsp.window.resize({ x = -50, y = 0, relative = true }), { repeating = true })
+  hl.bind("L", hl.dsp.window.resize({ x =  50, y = 0, relative = true }), { repeating = true })
+  hl.bind("K", hl.dsp.window.resize({ x = 0, y = -50, relative = true }), { repeating = true })
+  hl.bind("J", hl.dsp.window.resize({ x = 0, y =  50, relative = true }), { repeating = true })
+
+  hl.bind("Escape", hl.dsp.submap("reset"))
+  hl.bind("Return", hl.dsp.submap("reset"))
+end)
 
 -- Switch workspaces with mainMod + [0-9]
 -- Move active window to a workspace with mainMod + SHIFT + [0-9]
