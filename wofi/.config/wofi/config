@@ -1,0 +1,8 @@
+hide_scroll=true
+mode=drun
+width=18%
+lines=20
+line_wrap=word
+term=foot
+location=center
+
