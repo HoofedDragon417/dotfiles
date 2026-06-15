@@ -202,6 +202,7 @@ hl.animation({ leaf = "zoomFactor",    enabled = true,  speed = 7,    bezier = "
 -- See https://wiki.hypr.land/Configuring/Layouts/Dwindle-Layout/ for more
 hl.config({
     dwindle = {
+        force_split = 2,
         preserve_split = true, -- You probably want this
     },
 })
@@ -297,6 +298,8 @@ hl.bind(mainMod .. " + SHIFT + H", hl.dsp.window.swap({ direction = "l" }))
 hl.bind(mainMod .. " + SHIFT + J", hl.dsp.window.swap({ direction = "d" }))
 hl.bind(mainMod .. " + SHIFT + K", hl.dsp.window.swap({ direction = "u" }))
 hl.bind(mainMod .. " + SHIFT + L", hl.dsp.window.swap({ direction = "r" }))
+
+hl.bind(mainMod .. " + SHIFT + R", hl.dsp.exec_cmd("~/.config/hypr/scripts/reload_config.sh"))
 
 -- Move focus inside group
 hl.bind(mainMod .. " + J", hl.dsp.group.prev())

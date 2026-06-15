@@ -28,6 +28,7 @@
         "temperature",
         "backlight",
         "battery",
+        "battery#bat2",
         "tray",
         "custom/power"
     ],
@@ -40,8 +41,8 @@
     },
     "hyprland/language": {
         "format": "  {short}",
-        "format-ru": "RU",
-        "format-us": "EN",
+        // "format-ru": "RU",
+        // "format-us": "EN",
         "keyboard-name": "at-translated-set-2-keyboard",
         "on-click": "hyprctl switchxkblayout at-translated-set-2-keyboard next"
     },
